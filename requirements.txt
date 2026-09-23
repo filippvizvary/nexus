@@ -1,5 +1,4 @@
-fastapi[standart]
-uvicorn
+fastapi[standard]
+uvicorn[standard]
 psutil
-websockets
 docker
