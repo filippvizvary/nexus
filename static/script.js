@@ -18,11 +18,11 @@ function showSection(sectionId) {
     event.target.classList.add('active');
 }
 
-function socketOnOpen(event){
+function statSocketOnOpen(event){
     console.log("WebSocket initialized and connected");
 }
 
-function socketOnMessage(event){
+function statSocketOnMessage(event){
     const data = JSON.parse(event.data);
 
     const cpuText = document.getElementById("cpu-text");
@@ -50,15 +50,30 @@ function socketOnMessage(event){
 
 
 const host = window.location.host;
-const socket = new WebSocket(`ws://${host}/ws/system-stats`);
-
-socket.onopen = socketOnOpen;
-socket.onmessage = socketOnMessage;
-socket.onclose = function(event) {
+const statSocket = new WebSocket(`ws://${host}/ws/system-stats`);
+statSocket.onopen = statSocketOnOpen;
+statSocket.onmessage = statSocketOnMessage;
+statSocket.onclose = function(event) {
     console.warn("WebSocket spojenie bolo prerušené.");
 };
-socket.onerror = function(error) {
+statSocket.onerror = function(error) {
     console.error("WebSocket error: ", error);
+};
+
+const dockerSocket = new WebSocket(`ws://${host}/ws/docker`);
+dockerSocket.onopen = function(event){
+    console.log("Docker WebSocket initialized and connected");
+};
+
+dockerSocket.onmessage = function(event){
+    const data = JSON.parse(event.data);
+    const servicesList = data.services
+    
+    for(service of services){
+        const ul = document.getElementById("docker-list")
+        const li = document.createElement("li")
+        li.textContent = service.name
+    }
 };
 
 
