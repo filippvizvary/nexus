@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+    
+    <div class="app-layout">
+        <aside class="sidebar">
+            <h2>Dashboard</h2>
+            <ul class="menu">
+                <li class="menu-item active" onclick="showSection('overview')">Overview</li>
+                <li class="menu-item" onclick="showSection('services')">Services</li>
+                <li class="menu-item" onclick="showSection('servers')">Servers</li>
+                <li class="menu-item" onclick="showSection('settings')">Settings</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div id="overview" class="view-section">
+                <h1>System Overview</h1>
+                <p>Welcome to your control dashboard.</p>
+
+                <div class="stats-container">
+                    <div class="card">
+                        <h3>CPU Usage</h3>
+                        <div class="stat-value" id="cpu-text">0%</div>
+                        <progress id="cpu-bar" value="0" max="100"></progress>
+                    </div>
+
+                    <div class="card">
+                        <h3>RAM Usage</h3>
+                        <div class="stat-value" id="ram-text">0%</div>
+                        <progress id="ram-bar" value="0" max="100"></progress>
+                    </div>
+
+                    <div class="card">
+                        <h3>Disk Usage</h3>
+                        <div class="stat-value" id="disk-text">0%</div>
+                        <progress id="disk-bar" value="0" max="100"></progress>
+                    </div>
+
+                </div>
+
+                
+            </div>
+            
+            <div id="services" class="view-section hidden">
+                 <h1>Services</h1>
+                 <p>Configuration options go here</p>
+            </div>
+
+            <div id="servers" class="view-section hidden">
+                <h1>Connected Servers</h1>
+                <p>List of active connectors will appear here.</p>
+            </div>
+
+            <div id="settings" class="view-section hidden">
+                <h1>Settings</h1>
+                <p>Configuration options go here</p>
+            </div>
+        </main>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <script src="static/script.js"></script>
+</body>
+</html>

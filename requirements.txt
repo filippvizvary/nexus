@@ -1,0 +1,5 @@
+fastapi[standart]
+uvicorn
+psutil
+websockets
+docker
