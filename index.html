@@ -55,7 +55,28 @@
                  <div class="services-container">
                     <div class="services">
                         <h3>Docker services</h3>
-                        <ul id="docker-list" class="docker-list"></ul>
+                        <table class="docker-list">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Image</th>
+                                    <th>Status</th>
+                                    <th>Controls</th>
+                                </tr>
+                            </thead>
+                            <tbody id="docker-list-body">
+                                <!-- <tr>
+                                    <td>abc123</td>
+                                    <td>nginx</td>
+                                    <td>1.25.5</td>
+                                    <td><span class="status running">Running</span></td>
+                                    <td>
+                                        <button type="button">Start</button>
+                                    </td>
+                                </tr> -->
+                            </tbody>
+                        </table>
                     </div>
                  </div>
             </div>

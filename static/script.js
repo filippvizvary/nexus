@@ -66,14 +66,28 @@ dockerSocket.onopen = function(event){
 };
 
 dockerSocket.onmessage = function(event){
-    const data = JSON.parse(event.data);
-    const servicesList = data.services
-    
-    for(service of services){
-        const ul = document.getElementById("docker-list")
-        const li = document.createElement("li")
-        li.textContent = service.name
-    }
+    const servicesList = JSON.parse(event.data).containers;
+    const tbody = document.getElementById("docker-list-body");
+tbody.innerHTML = ''; // clear old rows first
+
+for (const service of servicesList) {
+    const isRunning = service.status.toLowerCase() === 'running';
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+        <td>${service.id}</td>
+        <td>${service.name}</td>
+        <td>${service.image}</td>
+        <td><span class="status ${service.status.toLowerCase()}">${service.status}</span></td>
+        <td>
+            <button type="button" data-action="${isRunning ? 'stop' : 'start'}" data-id="${service.id}">
+                ${isRunning ? 'Stop' : 'Start'}
+            </button>
+            <button type="button" data-action="restart" data-id="${service.id}">Restart</button>
+        </td>
+    `;
+    tbody.appendChild(tr);
+}
 };
 
 

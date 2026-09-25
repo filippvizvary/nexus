@@ -8,11 +8,10 @@ from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
 
-# Ak máš CSS a JS v samostatných súboroch, FastAPI ich takto sprístupní
-# (Predpokladáme, že tvoje súbory sú v rovnakom priečinku)
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-# 1. Keď otvoríš http://localhost:8000, pošle ti tvoj index.html
+
 @app.get("/")
 async def get_dashboard():
     return FileResponse("index.html")
